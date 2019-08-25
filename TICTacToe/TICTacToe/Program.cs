@@ -10,7 +10,9 @@ namespace TICTacToe
     {
         static void Main(string[] args)
         {
-            int x;
+            TICTacToe ttt = new TICTacToe();
+            ttt.StartGame();
+            Console.ReadLine();
         }
     }
 }
