@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace TICTacToe
 {
+    // YM: you need to add some test.. at least for the gameIsEnd and for checking the input
     class TICTacToe
     {
-        public const int Size = 3;
+        public const int Size = 3; // YM: const is ALL CAPITAL LETTER
         private int[,] board;
-        public TICTacToe()//opens new board
+        public TICTacToe()//opens new board //YM: you dont need that message...
         {
             board = new int[Size, Size];
             InitialiseBoard();
@@ -48,7 +49,9 @@ namespace TICTacToe
 
             }
         }
-        private void InitialiseBoard()
+        // YM: you dont need to initialize. 
+        // read this: https://stackoverflow.com/questions/22218066/how-to-assign-0-to-whole-array
+        private void InitialiseBoard() 
         {
             for (int i = 0; i < board.GetLength(0); i++)
             {
@@ -112,9 +115,12 @@ namespace TICTacToe
             }
             return true;
         }
+        
+        // YM: https://www.google.com/search?q=DRY+prenciple&oq=DRY+prenciple&aqs=chrome..69i57j0l5.5944j1j7&sourceid=chrome&ie=UTF-8
+        // you are writing A LOT of duplicate code!
         private bool Win()// checks if someone won. if so, prints the winning player
         {
-            int sumOfSomething = 0;
+            int sumOfSomething = 0; //YM: very bad name
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 sumOfSomething = SumColumn(i);
