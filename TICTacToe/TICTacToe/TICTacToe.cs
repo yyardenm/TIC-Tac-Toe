@@ -4,6 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//CR - you still have a lot of places when you have "consoel.Readline" or "console.Writeline"
+// not only in the print board function (at least in 10 places more"
+// lets say ME (Yarden), will handle the UI ond yoy will handle all the logic.
+// to do that (beacuse we are very far away from each other), we need to define an -Interface-:
+// the interface is how we will connected. for example - I need a 
+// * function from you that will show me the correct user
+// * I will implementing the game - so I will give you i,j and you perform the action - if the move is Invalid you will return me false
+//
+// what else do we need to add to the interface
+// to do that - think in all the place you have interaction with the user (read, write) 
+// and as a baseline think which function you need to do for that
+
+
 namespace TICTacToe
 {
     class TICTacToe
@@ -17,6 +31,8 @@ namespace TICTacToe
         }
         public void StartGame()
         {
+            //CR - I think all this initialization ned to be in initialize function - and call this function from here/
+            // this is because if you want to restart the game - it will be easier
             char player = '1';
             int x;
             int y;
@@ -114,10 +130,11 @@ namespace TICTacToe
         }
         private bool Win()// checks if someone won. if so, prints the winning player
         {
-            int sumOfSomething = 0;
+            int sumOfSomething = 0; //CR - bad name
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 sumOfSomething = SumColumn(i);
+                //CR - too much duplicate code. all this ifs returning to many times
                 if (sumOfSomething == 3)
                 {
                     PrintBoard();
@@ -178,6 +195,7 @@ namespace TICTacToe
             return false;
         }
 
+        //CR - this and SumColumn same function, why not creating 1 function with 1 variable - row or column?
         private int SumRow(int row)// returns the row's sum
         {
             int sum = 0;
